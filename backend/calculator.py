@@ -29,6 +29,6 @@ def is_operator_supported(operator):
 
 def perform_operation(oper1, oper2, operator):
     if not is_operator_supported(operator):
-        return -1
+        raise Exception ("Operator not supported")
     return operator_to_func_map[operator](oper1, oper2)
 

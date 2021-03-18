@@ -46,5 +46,35 @@ class TestCalculator(unittest.TestCase):
         actual_dividend = division(operand1, operand2)
         self.assertEqual(expected_dividend, actual_dividend, "Expected and actual dividend differ")
 
+    def test_incorrect_operator(self):
+        operator1 = 4
+        operator2 = 2
+        operation = '@'
+
+        expected_exception = Exception("Operator not supported")
+
+        try:
+            perform_operation(operator1, operator2, operation)
+        except Exception as actual_exception:
+            self.assertEqual(str(expected_exception), str(actual_exception), "Operator provided not valid")
+
+    def test_is_operation_supported(self):
+        operation = '+'
+
+        actual_operation = is_operator_supported(operation)
+        expected_operation = True
+        self.assertEqual(expected_operation, actual_operation, "this operation is not in the list")
+
+    def test_perform_operation(self):
+        operand1 = 5
+        operand2 = 10
+        operator = '+'
+
+        actual_result = perform_operation(operand1, operand2, operator)
+        expected_result = 15
+
+        self.assertEqual(expected_result, actual_result, "Expected and actual results differ")
+
+
 if __name__ == '__main__':
     unittest.main()
